@@ -4,6 +4,7 @@ body {
 }
 
 #container {
+	cursor: pointer;
 	position: absolute;
 	text-align: center;	
 	background: tomato;
@@ -15,11 +16,17 @@ body {
     height: 30px;
     padding-top: 15px;
 	border: 1px solid tomato;
-	border-radius: 30px;
+	border-radius: 100%;
 }
 
 #container:hover {
 	transition: background ease 0.5s, color ease 0.5s;
 	background: white;
 	color: tomato;
+}
+
+#fillScreen {
+	display: none;
+	position: absolute;
+	transition: all ease 0.5s;
 }

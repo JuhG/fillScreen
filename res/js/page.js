@@ -1,49 +1,83 @@
 $(document).ready(function(){
 
+	$('#container').fillScreen({
+		// speed: 1000
+	});
+
+});
+
+/* OLD ONE
 	var distance = getBoundaries();
 
 	var n = 1;
 
-	var speed = 10;
+	var speed = 5;
 
-	$("#container").click(function(){
+	$("#cc").click(function(){
+
+		var $this = $(this);
 
 		if (n == 1) {
 
-			$('body').css('overflow','hidden');
-			clearInterval(changeBorder);
+			var windowTop = $(window).scrollTop();
+			var elementTop = $("#container").position().top - windowTop;
+			var elementLeft = $("#container").position().left;
 
-			var initialTop = parseInt($("#container").css("top").replace(/[^-\d\.]/g, ''));
-			var initialLeft = parseInt($("#container").css("left").replace(/[^-\d\.]/g, ''));
-			var initialRadius = parseInt($("#container").css("border-radius").replace(/[^-\d\.]/g, ''));
-			var initialBorder = parseInt($("#container").css("border-width").replace(/[^-\d\.]/g, ''));
+			ajax();
+
+			$("#fillScreen").css("top", elementTop + "px");
+			$("#fillScreen").css("left", elementLeft + "px");
+
+			$("#fillScreen").css("display", "block");
+			$("#fillScreen").css({transform: "translate(-500px, 300px)"});
+
+			$('body').css('overflow','hidden');
+			$($this).css("background", "white");
+			$($this).css("color", "tomato");
+			$($this).css("cursor", "initial");
+
+			var initialTop = parseInt($($this).css("top").replace(/[^-\d\.]/g, ''));
+			var initialLeft = parseInt($($this).css("left").replace(/[^-\d\.]/g, ''));
+			var initialBorder = parseInt($($this).css("border-width").replace(/[^-\d\.]/g, ''));
 
 			var changeBorder = setInterval( function() {
 
-				$("#container").css("border-width", ( initialBorder + speed * n ) + "px");
-				$("#container").css("border-radius", ( initialRadius + 2 * n * speed ) + "px");
-				$("#container").css("top", (initialTop - speed * n) + "px");
-				$("#container").css("left", (initialLeft - speed * n) + "px");
+				$($this).css("border-width", ( initialBorder + speed * n ) + "px");
+				$($this).css("top", (initialTop - speed * n) + "px");
+				$($this).css("left", (initialLeft - speed * n) + "px");
 
 				if (speed * n > distance) {
+
 					clearInterval(changeBorder);
-					$("#container").css("background", "white");
-					$("#container").css("color", "tomato");
+					$($this).css("cursor", "pointer");
+
+					$($this).css("border-width", initialBorder);
+					$($this).css("top", initialTop);
+					$($this).css("left", initialLeft);
+
 					$("body").css("background", "tomato");
-					$("#container").css("border-width", "1px");
-					$("#container").css("top", "100px");
-					$("#container").css("left", "1000px");
 					$('body').css('overflow', 'visible');
 				}
+
 				n++;
+
 			}, 1);
+
+		} else if (speed * n > distance) {
+
+			$("body").css("background", "white");
+			n = 1;
+
+		} else {
+
 		}
 
 	})
 
-})
 
 function getBoundaries() {
+
+	//var height = alma.height();
 
 	var distance = 0;
 
@@ -63,4 +97,29 @@ function getBoundaries() {
 }
 
 function changeBorder(speed) {				
+
 }
+
+function ajax() {
+	$.ajax({
+		url: "new.php",
+		type: "GET",
+		dataType: "html",
+		success: function(r) {
+
+			if (!r) {
+
+				$("body").prepend("Not found!");
+
+			} else {
+
+				$("#fillScreen").prepend(r);
+
+			}
+		},
+		error: function(r) {
+			console.log(r.responseText);
+		}
+	});
+	return false;
+}*/
