@@ -7,26 +7,22 @@ body {
 	cursor: pointer;
 	position: absolute;
 	text-align: center;	
-	background: tomato;
-	color: white;
+	background: white;
+	color: tomato;
 	font-weight: bold;
-    left: 1000px;
-    top: 100px;
-    width: 30px;
-    height: 30px;
-    padding-top: 15px;
+	line-height: 50px;
+    left: 400px;
+    top: 200px;
+    width: 50px;
+    height: 50px;
 	border: 1px solid tomato;
-	border-radius: 100%;
+	border-radius: 50%;
+	transition: all ease 0.3s;
+	box-sizing: border-box;
+	z-index: 1;
 }
 
 #container:hover {
-	transition: background ease 0.5s, color ease 0.5s;
-	background: white;
-	color: tomato;
-}
-
-#fillScreen {
-	display: none;
-	position: absolute;
-	transition: all ease 0.5s;
+	background: tomato;
+	color: white;
 }

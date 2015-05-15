@@ -9,10 +9,6 @@
 	</head>
 	<body>
 
-		<div id="fillScreen">
-			
-		</div>
-
 		<div id="container">
 			X
 		</div>
